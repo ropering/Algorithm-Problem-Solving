@@ -1,5 +1,11 @@
 # https://www.daleseo.com/sort-selection/
 
+'''
+선택 정렬
+
+최소값의 인덱스 변수 생성
+내부 for문을 마칠 때마다 위치 swap
+'''
 
 def selection_sort(arr):
     for i in range(len(arr) - 1):
