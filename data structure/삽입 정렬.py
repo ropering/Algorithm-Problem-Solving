@@ -19,5 +19,3 @@ start = time.time()
 insertion_sort([5,4,3,2,1])
 print(f"time : {time.time() - start}")
 
-
-spring 물어보기;
