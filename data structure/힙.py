@@ -92,3 +92,11 @@ heap.heap_array
 
 heap.pop()
 heap.heap_array
+
+
+import heapq
+heap = []
+heapq.heappush(heap, 3)
+type(heap)
+
+
