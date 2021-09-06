@@ -1,13 +1,18 @@
-def solution(n, lost, reserve):
-    _lost = []
-    _reserve = []
+# https://ibit.ly/XakK
+'''
+배열이 정렬이 안되어 있다 -> 13, 18번 해결
+- 4, [2, 4], [1, 3] => 1 이 뒷번호 2에 빌려주고, 3이 뒷번호 4에 빌려주므로 4명 (O)
+- 4, [2, 4], [3, 1] => 3 이 앞번호 2에 빌려주고, 1은 뒷번호 2가 이미 있으므로 3명 (X)
+- 정렬에서 오류발생할 수 있지 않을까?
 
-    for i in lost:
-        if i not in reserve:
-            _lost.append(i)
-    for i in reserve:
-        if i not in lost:
-            _reserve.append(i)
+잃어버린 사람 == 여분이 있는사람인 경우가 있다
+정렬 후 중복제거 / 중복제거 후 정렬 : 결과 차이가 있다 -> 5번 해결
+'''
+def solution(n, lost, reserve):    
+    _lost = [i for i in lost if i not in reserve]
+    _reserve = [j for j in reserve if j not in lost]
+    _lost.sort()
+    _reserve.sort()
     
     for i in _reserve: # reserve 대신 lost를 넣으면 문제가 생길 수 있다 (없애지 않았기 때문)
         f = i - 1
@@ -15,12 +20,10 @@ def solution(n, lost, reserve):
 
         if f in _lost:
             _lost.remove(f)
-        if b in _lost:
+        elif b in _lost:
             _lost.remove(b)
     return n - len(_lost)
 
-
-print(solution(5, [2, 3, 4], [1, 2, 3]))
 
 '''나의 풀이'''
 def solution(n, lost, reserve):
