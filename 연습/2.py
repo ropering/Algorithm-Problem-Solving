@@ -23,7 +23,7 @@ while True:
     img = detector.findHands(img)
     lmList = detector.findPosition(img, draw=False)
     # print(lmList)
-if len(lmList) != 0:
+    if len(lmList) != 0:
         fingers = []
 # Thumb
         if lmList[tipIds[0]][1] > lmList[tipIds[0] - 1][1]:
